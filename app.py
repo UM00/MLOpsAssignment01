@@ -6,28 +6,29 @@ from sklearn.metrics import accuracy_score
 
 app = Flask(__name__)
 accuracy = None
-data = pd.read_csv('apple_quality.csv')
+data = pd.read_csv("apple_quality.csv")
 
-X = data.drop('Quality', axis=1)
-y = data['Quality']
+X = data.drop("Quality", axis=1)
+y = data["Quality"]
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
 clf = RandomForestClassifier(random_state=42)
 clf.fit(X_train, y_train)
 
 y_pred = clf.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 print(f"Accuracy: {accuracy}")
-@app.route('/model_accuracy', methods=['GET'])
+
+
+@app.route("/model_accuracy", methods=["GET"])
 def model_accuracy():
     if accuracy is not None:
-        return jsonify({
-            'message': f"The model's accuracy is {accuracy}"
-        })
+        return jsonify({"message": f"The model's accuracy is {accuracy}"})
     else:
-        return jsonify({
-            'message': "The model's accuracy is not available."
-        })
+        return jsonify({"message": "The model's accuracy is not available."})
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     app.run(debug=True)
