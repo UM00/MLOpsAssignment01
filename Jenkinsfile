@@ -4,14 +4,15 @@ pipeline {
     environment {
         DOCKER_HUB_CREDENTIALS = '797d7ca8-2746-4f09-88f6-c1ec903c7e2d' // Jenkins credentials ID for Docker Hub login
         DOCKER_IMAGE_NAME = 'umoo/flask-app' // Docker image name
-        DOCKERFILE_PATH = 'Dockerfile' // Path to your Dockerfile
+        DOCKERFILE_PATH = 'Dockerfile' 
     }
 
     stages {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build(env.DOCKER_IMAGE_NAME, '-f ${env.DOCKERFILE_PATH} .')
+                    docker build -t "umoo/flask-app" -f Dockerfile .
+
                 }
             }
         }
