@@ -11,8 +11,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker build -t "umoo/flask-app" -f Dockerfile .
-
+                    docker.build("umoo/flask-app", "-f ${env.DOCKERFILE_PATH} .")
                 }
             }
         }
