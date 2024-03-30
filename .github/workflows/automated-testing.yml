@@ -40,6 +40,7 @@ jobs:
           pip install pytest
           pip install Flask
           pip install pandas
+          pip install sklearn
           # Additional dependencies if needed
 
       - name: Run automated tests on test branch
