@@ -19,4 +19,4 @@ jobs:
           pip install pytest
       - name: Run automated tests
         run: |
-          pytest tests/
+          pytest test/
