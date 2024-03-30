@@ -39,6 +39,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest
           pip install Flask
+          pip install pandas
           # Additional dependencies if needed
 
       - name: Run automated tests on test branch
