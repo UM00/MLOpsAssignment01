@@ -16,7 +16,9 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
+          pip install flask  # Install Flask and any other dependencies
           pip install pytest
+          # Additional dependencies if needed
       - name: Run automated tests
         run: |
           pytest test.py
