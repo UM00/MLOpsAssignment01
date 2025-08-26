@@ -27,8 +27,8 @@ def model_accuracy():
     if accuracy is not None:
         return jsonify({"message": f"The model's accuracy is {accuracy}"})
     else:
-        return jsonify({"message": "The model's accuracy is not available."})
+         jsonify({"message": "The model's accuracy is not available."})
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True
